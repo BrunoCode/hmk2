@@ -40,6 +40,7 @@ window.onload = function() {
     function update() {
 
       if(!(run++%120)){
+        console.log('update');
         graphics.clear();
         step();
       }
@@ -98,5 +99,6 @@ window.onload = function() {
           cells[i][j].state = genCells[i][j];
         }
       }
+      console.log(cells);
     }
 };
