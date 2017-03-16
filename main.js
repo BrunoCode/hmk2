@@ -3,7 +3,7 @@ window.onload = function() {
     var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
     var cells = [];
     var h = 30;
-    var w = 40;
+    var w = 30;
     var cellsize = 20;
     var run = 1;
     var deadCell = new Cell();
@@ -39,7 +39,7 @@ window.onload = function() {
 
     function update() {
 
-      if(!(run++%120)){
+      if(!(run++%60)){
         graphics.clear();
         step();
       }
@@ -78,15 +78,12 @@ window.onload = function() {
           if (ncount < 2 || ncount > 3) {
             genCells[i][j] = 0;
           } else if (ncount == 3) {
-            console.log('count 3,'+i+','+j);
             genCells[i][j] = 1;
           } else {
             genCells[i][j] = cells[i][j].state;
-            console.log('count '+ncount+','+i+','+j+':'+genCells[i][j]);
           }
           ncount = 0;
 
-          graphics.lineStyle(2, 0xe0e0e0, 1);
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
 
           if(genCells[i][j]){
