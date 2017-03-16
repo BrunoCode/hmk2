@@ -28,10 +28,11 @@ window.onload = function() {
           cells[i][j] = new Cell();
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
         }
-          cells[10][10].state =1;
-          cells[10][11].state =1;
-          cells[10][12].state =1;
       }
+      
+      cells[10][10].state =1;
+      cells[10][11].state =1;
+      cells[10][12].state =1;
       window.graphics = graphics;
 
     }
@@ -45,7 +46,7 @@ window.onload = function() {
 
     function step(){
       var cell;
-      var topRow;
+      var topRow;  cells[10][10].state =1;
       var bottomRow;
       var ncount = 0
       var n;
