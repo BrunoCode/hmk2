@@ -5,9 +5,10 @@ window.onload = function() {
     var h = 30;
     var w = 40;
     var cellsize = 20;
-    var run = 0;
+    var run = 1;
     var deadCell = new Cell();
     var deadRow = [];
+    var graphics;
     for (var i = 0; i < w; i++){
       deadRow[i] = deadCell;
     }
@@ -17,9 +18,9 @@ window.onload = function() {
     }
 
     function create () {
-      game.stage.backgroundColor = 0xffff;
-      var graphics = game.add.graphics(0, 0);
-      graphics.lineStyle(2, 0xF3F3F3, 1);
+      game.stage.backgroundColor = 0xffffff;
+      graphics = game.add.graphics(0, 0);
+      graphics.lineStyle(2, 0xe0e0e0, 1);
 
       for(var i = 0;  i < h; i++){
         cells[i]=[];
@@ -27,12 +28,16 @@ window.onload = function() {
           cells[i][j] = new Cell();
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
         }
+          cells[10][10].state =1;
+          cells[10][11].state =1;
+          cells[10][12].state =1;
       }
       window.graphics = graphics;
 
     }
 
     function update() {
+      graphics.clear();
       if(run){
         step();
       }
@@ -72,6 +77,13 @@ window.onload = function() {
           } else if (ncount == 3) {
             cell.state = 1;
           }
+          graphics.lineStyle(2, 0xe0e0e0, 1);
+          graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
+          if(cell.state){
+            graphics.beginFill(0xFF0000, 1);
+            graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
+          }
+
         }
       }
     }
