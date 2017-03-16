@@ -39,7 +39,7 @@ window.onload = function() {
 
     function update() {
       graphics.clear();
-      if(run){
+      if(!(run++%120)){
         step();
       }
     }
