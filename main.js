@@ -47,6 +47,7 @@ window.onload = function() {
     }
 
     function step(){
+      console.log(cells);
       var cell;
       var topRow;  cells[10][10].state =1;
       var bottomRow;
