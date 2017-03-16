@@ -2,9 +2,9 @@ window.onload = function() {
 
     var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
     var cells = [];
-    var h = 30;
-    var w = 30;
-    var cellsize = 20;
+    var h = 60;
+    var w = 60;
+    var cellsize = 10;
     var run = 0;
     var deadCell = new Cell();
     var deadRow = [];
@@ -42,8 +42,8 @@ window.onload = function() {
       if(game.input.activePointer.isDown){
         var pos = game.input.activePointer.position;
         if (pos.x < 600 && pos.y < 600){
-          var j = Math.floor(pos.x / 20);
-          var i = Math.floor(pos.y / 20);
+          var j = Math.floor(pos.x / 10);
+          var i = Math.floor(pos.y / 10);
           cells[i][j].state = 1;
           graphics.beginFill(0xFF0000, 1);
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
