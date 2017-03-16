@@ -73,5 +73,6 @@ window.onload = function() {
             cell.state = 1;
           }
         }
+      }
     }
 };
