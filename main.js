@@ -9,16 +9,18 @@ window.onload = function() {
     var deadCell = new Cell();
     var deadRow = [];
     var graphics;
+    var loop = 1;
     for (var i = 0; i < w; i++){
       deadRow[i] = deadCell;
     }
 
     function preload () {
-
+      game.load.spritesheet('button', 'play.png', 128, 128);
     }
 
     function create () {
       game.stage.backgroundColor = 0xffffff;
+      button = game.add.button(700, 400, 'button', action, this, 0, 0, 0);
       graphics = game.add.graphics(0, 0);
       graphics.lineStyle(2, 0xe0e0e0, 1);
 
@@ -50,10 +52,13 @@ window.onload = function() {
         }
       }
 
-      if(!(run++%60)){
+      if(run && !(loop++%60)){
         graphics.clear();
         step();
       }
+    }
+    function action(){
+      run = !run;
     }
 
     function step(){
