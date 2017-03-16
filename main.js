@@ -38,6 +38,14 @@ window.onload = function() {
     }
 
     function update() {
+      if(game.input.activePointer.isDown){
+        var pos = game.input.activePointer.position;
+        if (pos.x < 600 && pos.y < 600){
+          var j = Math.floor(pos.x / 20);
+          var i = Math.floor(pos.y / 20);
+          cells[i][j].state = 1;
+        }
+      }
 
       if(!(run++%60)){
         graphics.clear();
@@ -83,7 +91,7 @@ window.onload = function() {
             genCells[i][j] = cells[i][j].state;
           }
           ncount = 0;
-
+          graphics.lineStyle(2, 0xe0e0e0, 1);
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
 
           if(genCells[i][j]){
