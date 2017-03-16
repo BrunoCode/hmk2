@@ -81,8 +81,8 @@ window.onload = function() {
             console.log('count 3,'+i+','+j);
             genCells[i][j] = 1;
           } else {
-            console.log('count '+ncount+','+i+','+j+':'+genCells[i][j]);
             genCells[i][j] = cells[i][j].state;
+            console.log('count '+ncount+','+i+','+j+':'+genCells[i][j]);
           }
           ncount = 0;
 
@@ -92,6 +92,7 @@ window.onload = function() {
           if(genCells[i][j]){
             graphics.beginFill(0xFF0000, 1);
             graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
+            graphics.endFill();
           }
         }
       }
