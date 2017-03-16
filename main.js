@@ -5,11 +5,10 @@ window.onload = function() {
     var h = 30;
     var w = 30;
     var cellsize = 20;
-    var run = 1;
+    var run = 0;
     var deadCell = new Cell();
     var deadRow = [];
     var graphics;
-    var loop = 1;
     for (var i = 0; i < w; i++){
       deadRow[i] = deadCell;
     }
@@ -52,7 +51,7 @@ window.onload = function() {
         }
       }
 
-      if(run && !(loop++%60)){
+      if(run) {
         graphics.clear();
         step();
       }
