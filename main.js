@@ -48,7 +48,7 @@ window.onload = function() {
 
     function step(){
       var cell;
-      var topRow;  cells[10][10].state =1;
+      var topRow;
       var bottomRow;
       var ncount = 0
       var n;
@@ -68,14 +68,14 @@ window.onload = function() {
           n = cells[i][j - 1] || deadCell;
           if(n.state) { ncount++;}
           n = cells[i][j + 1] || deadCell;
-          if(n.state) { ncount++;}graphics.clear();
+          if(n.state) { ncount++;}
           n = bottomRow[j - 1] || deadCell;
           if(n.state) { ncount++;}
           n = bottomRow[j];
           if(n.state) { ncount++;}
           n = bottomRow[j + 1] || deadCell;
           if(n.state) { ncount++;}
-          if(cells[i][j].state) console.log(i+','+j);
+          if(cells[i][j].state) console.log(cells[i][j].state+ ','+i+','+j);
           cell = cells[i][j];
           //change state
           if (ncount < 2 || ncount > 3) {
@@ -98,7 +98,7 @@ window.onload = function() {
       for(var i = 0; i < h; i++){
         for(var j = 0; j < w; j++){
           cells[i][j].state = genCells[i][j];
-          if(cells[i][j].state) console.log(i+','+j);
+          if(cells[i][j].state) console.log(cells[i][j].state + ","+i+','+j);
         }
       }
     }
