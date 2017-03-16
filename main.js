@@ -44,6 +44,9 @@ window.onload = function() {
           var j = Math.floor(pos.x / 20);
           var i = Math.floor(pos.y / 20);
           cells[i][j].state = 1;
+          graphics.beginFill(0xFF0000, 1);
+          graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
+          graphics.endFill();
         }
       }
 
