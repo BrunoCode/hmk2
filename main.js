@@ -47,7 +47,6 @@ window.onload = function() {
     }
 
     function step(){
-      console.log(cells);
       var cell;
       var topRow;  cells[10][10].state =1;
       var bottomRow;
@@ -76,7 +75,7 @@ window.onload = function() {
           if(n.state) { ncount++;}
           n = bottomRow[j + 1] || deadCell;
           if(n.state) { ncount++;}
-
+          if(cells[i][j].state) console.log(i+','+j);
           cell = cells[i][j];
           //change state
           if (ncount < 2 || ncount > 3) {
@@ -95,11 +94,12 @@ window.onload = function() {
 
         }
       }
+      console.log('new');
       for(var i = 0; i < h; i++){
         for(var j = 0; j < w; j++){
           cells[i][j].state = genCells[i][j];
+          if(cells[i][j].state) console.log(i+','+j);
         }
       }
-      console.log(cells);
     }
 };
