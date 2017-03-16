@@ -40,7 +40,6 @@ window.onload = function() {
     function update() {
 
       if(!(run++%120)){
-        console.log('update');
         graphics.clear();
         step();
       }
@@ -75,30 +74,29 @@ window.onload = function() {
           if(n.state) { ncount++;}
           n = bottomRow[j + 1] || deadCell;
           if(n.state) { ncount++;}
-          if(cells[i][j].state) console.log(cells[i][j].state+ ','+i+','+j);
-          cell = cells[i][j];
+
           //change state
           if (ncount < 2 || ncount > 3) {
             genCells[i][j] = 0;
           } else if (ncount == 3) {
             genCells[i][j] = 1;
           } else {
-            genCells[i][j] = cell.state;
+            genCells[i][j] = cells[i][j].state;
           }
+          ncount = 0;
+
           graphics.lineStyle(2, 0xe0e0e0, 1);
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
+
           if(genCells[i][j]){
             graphics.beginFill(0xFF0000, 1);
             graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
           }
-
         }
       }
-      console.log('new');
       for(var i = 0; i < h; i++){
         for(var j = 0; j < w; j++){
           cells[i][j].state = genCells[i][j];
-          if(cells[i][j].state) console.log(cells[i][j].state + ","+i+','+j);
         }
       }
     }
