@@ -1,4 +1,4 @@
-function Cell(state, color,visited, delta);
+function Cell(state, color,visited, delta)
 {
   this.state = state || 0;
   this.color = color || 0;
