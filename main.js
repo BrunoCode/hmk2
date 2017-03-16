@@ -51,9 +51,11 @@ window.onload = function() {
       var bottomRow;
       var ncount = 0
       var n;
+      var genCells = [];
       for(var i = 0;  i < h; i++) {
         topRow = cells[i-1] || deadRow;
         bottomRow = cells[i+1] || deadRow;
+        genCells[i] = [];
 
         for(var j = 0; j < w; j++){
           n = topRow[j - 1] || deadCell;
@@ -65,27 +67,35 @@ window.onload = function() {
           n = cells[i][j - 1] || deadCell;
           if(n.state) { ncount++;}
           n = cells[i][j + 1] || deadCell;
-          if(n.state) { ncount++;}
+          if(n.state) { ncount++;}graphics.clear();
           n = bottomRow[j - 1] || deadCell;
           if(n.state) { ncount++;}
           n = bottomRow[j];
           if(n.state) { ncount++;}
           n = bottomRow[j + 1] || deadCell;
           if(n.state) { ncount++;}
+
           cell = cells[i][j];
           //change state
           if (ncount < 2 || ncount > 3) {
-            cell.state = 0;
+            genCells[i][j] = 0;
           } else if (ncount == 3) {
-            cell.state = 1;
+            genCells[i][j] = 1;
+          } else {
+            genCells[i][j] = cell.state;
           }
           graphics.lineStyle(2, 0xe0e0e0, 1);
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
-          if(cell.state){
+          if(genCells[i][j]){
             graphics.beginFill(0xFF0000, 1);
             graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
           }
 
+        }
+      }
+      for(var i = 0; i < h; i++){
+        for(var j = 0; j < w; j++){
+          cells[i][j].state = genCells[i][j];
         }
       }
     }
