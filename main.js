@@ -46,7 +46,6 @@ window.onload = function() {
     }
 
     function step(){
-      var cell;
       var topRow;
       var bottomRow;
       var ncount = 0
@@ -79,8 +78,10 @@ window.onload = function() {
           if (ncount < 2 || ncount > 3) {
             genCells[i][j] = 0;
           } else if (ncount == 3) {
+            console.log('count 3,'+i+','+j);
             genCells[i][j] = 1;
           } else {
+            console.log('count '+ncount+','+i+','+j+':'+genCells[i][j]);
             genCells[i][j] = cells[i][j].state;
           }
           ncount = 0;
