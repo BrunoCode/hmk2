@@ -29,7 +29,7 @@ window.onload = function() {
           graphics.drawRect(j * cellsize, i * cellsize, cellsize, cellsize);
         }
       }
-      
+
       cells[10][10].state =1;
       cells[10][11].state =1;
       cells[10][12].state =1;
@@ -71,7 +71,7 @@ window.onload = function() {
           if(n.state) { ncount++;}
           n = bottomRow[j + 1] || deadCell;
           if(n.state) { ncount++;}
-
+          cell = cells[i][j];
           //change state
           if (ncount < 2 || ncount > 3) {
             cell.state = 0;
